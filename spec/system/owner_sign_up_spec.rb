@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Owner registers' do
+describe 'Owner creates an account' do
   it 'successfully' do
     visit root_path
     click_on 'Entrar'

@@ -94,6 +94,7 @@ pt-BR:
     registrations:
       destroyed: Adeus! A sua conta foi cancelada com sucesso. Esperamos vê-lo novamente em breve.
       edit:
+        edit_account: Editar conta de
         are_you_sure: Você tem certeza?
         cancel_my_account: Cancelar minha conta
         currently_waiting_confirmation_for_email: 'No momento esperando por: %{email}'
@@ -126,6 +127,8 @@ pt-BR:
         sign_in: Login
         sign_in_with_provider: Entrar com %{provider}
         sign_up: Criar uma conta
+      minimum_password:
+        minimum: mínimo de caracteres
       minimum_password_length:
         one: "(Mínimo de %{count} caractere)"
         other: "(Mínimo de %{count} caracteres)"
