@@ -12,8 +12,8 @@
     <header>
       <nav>
         <% if owner_signed_in? %>
-          <%= current_owner.email %>
-          <%= link_to t('helpers.submit.log_out'), destroy_owner_session_path %>
+          <%= current_owner.email %> |
+          <%= button_to t('helpers.submit.log_out'), destroy_owner_session_path, method: :delete %>
         <% else %>
           <%= link_to t('helpers.submit.log_in'), new_owner_session_path %>
         <% end %>
