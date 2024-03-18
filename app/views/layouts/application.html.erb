@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DeliveryApp</title>
+    <title>Delivery-APP</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application" %>
   </head>
-
   <body>
+    <header>
+      <nav>
+        <% if owner_signed_in? %>
+          <%= current_owner.email %>
+          <%= link_to t('helpers.submit.log_out'), destroy_owner_session_path %>
+        <% else %>
+          <%= link_to t('helpers.submit.log_in'), new_owner_session_path %>
+        <% end %>
+      </nav>
+    </header>
+    <p><%= notice %></p>
+    <p><%= alert %></p>
     <%= yield %>
   </body>
 </html>
