@@ -4,4 +4,7 @@ Rails.application.routes.draw do
     registrations: 'owners/registrations'
   }
   root to: 'home#index'
+
+  resources :restaurants, only: [:new, :create]
+
 end

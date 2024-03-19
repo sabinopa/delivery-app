@@ -1,0 +1,113 @@
+<h1>Cadastre seu restaurante</h1>
+<%= form_with model: @restaurant do |form| %>
+
+  <div>
+    <%= form.label :brand_name %>
+    <%= form.text_field :brand_name %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :corporate_name %>
+    <%= form.text_field :corporate_name %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :registrarion_number %>
+    <%= form.text_field :registrarion_number %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :phone_number %>
+    <%= form.text_field :phone_number %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :neighborhood %>
+    <%= form.text_field :neighborhood %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :city %>
+    <%= form.text_field :city %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :state %>
+    <%= form.text_field :state %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :zipcode %>
+    <%= form.text_field :zipcode %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :estimated_time %>
+    <%= form.time_field :estimated_time %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :cancelation_policy %>
+    <%= form.text_area :cancelation_policy %>
+  </div>
+  <br>
+  <%= fields_for :payment_method do |payment_f| %>
+  <h2>Meios de pagamento</h2>
+  <div>
+    <%= payment_f.label :bank_transfer %> <br>
+    <%= payment_f.radio_button :bank_transfer, true %>
+    <%= payment_f.label :accepts %> <br>
+    <%= payment_f.radio_button :bank_transfer, false %>
+    <%= payment_f.label :refuses %>
+  </div>
+  <br>
+  <div>
+    <%= payment_f.label :credit_card %> <br>
+    <%= payment_f.radio_button :credit_card, true %>
+    <%= payment_f.label :accepts %> <br>
+    <%= payment_f.radio_button :credit_card, false %>
+    <%= payment_f.label :refuses %>
+  </div>
+  <br>
+  <div>
+    <%= payment_f.label :debit_card %> <br>
+    <%= payment_f.radio_button :debit_card, true %>
+    <%= payment_f.label :accepts %> <br>
+    <%= payment_f.radio_button :debit_card, false %>
+    <%= payment_f.label :refuses %>
+  </div>
+  <br>
+  <div>
+    <%= payment_f.label :cash %> <br>
+    <%= payment_f.radio_button :cash, true %>
+    <%= payment_f.label :accepts %> <br>
+    <%= payment_f.radio_button :cash, false %>
+    <%= payment_f.label :refuses %>
+  </div>
+  <br>
+  <div>
+    <%= payment_f.label :deposit %> <br>
+    <%= payment_f.radio_button :deposit, true %>
+    <%= payment_f.label :accepts %> <br>
+    <%= payment_f.radio_button :deposit, false %>
+    <%= payment_f.label :refuses %>
+  </div>
+  <% end %>
+  <br>
+  <%= form.submit %>
+<% end %>
