@@ -1,0 +1,21 @@
+pt-BR:
+  activerecord:
+    models:
+      restaurants:
+        one: Restaurante
+        other: Restaurantes
+    attributes:
+      restaurant:
+        brand_name: Nome Fantasia
+        corporate_name: Razão Social
+        registration_number: CNPJ
+        phone_number: Telefone
+        email: E-mail
+        address: Endereço
+        neighborhood: Bairro
+        city: Cidade
+        state: Estado
+        zipcode: CEP
+        description: Descrição do Restaurante
+        estimated_time: Tempo Estimado de Entrega
+        cancelation_policy: Política de Cancelamento

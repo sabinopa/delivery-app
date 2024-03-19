@@ -1,6 +1,7 @@
 class RestaurantsController < ApplicationController
   def new
     @restaurant = Restaurant.new
+    @payment_method = @restaurant.build_payment_method
   end
 
   def create

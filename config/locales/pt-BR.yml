@@ -150,9 +150,9 @@ pt-BR:
     submit:
       log_in: Entrar
       log_out: Sair
-      create: Criar %{model}
-      submit: Salvar %{model}
-      update: Atualizar %{model}
+      create: Criar
+      submit: Salvar
+      update: Atualizar
   number:
     currency:
       format:
