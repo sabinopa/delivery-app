@@ -1,5 +1,5 @@
 class Restaurant < ApplicationRecord
-  has_one :payment_method
+  has_and_belong_to_many :payment_methods
 
   accepts_nested_attributes_for :payment_method
 end
