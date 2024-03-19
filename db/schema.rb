@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_18_143959) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_19_171634) do
   create_table "owners", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -25,4 +25,36 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_18_143959) do
     t.index ["reset_password_token"], name: "index_owners_on_reset_password_token", unique: true
   end
 
+  create_table "payment_methods", force: :cascade do |t|
+    t.boolean "bank_transfer"
+    t.boolean "credit_card"
+    t.boolean "debit_card"
+    t.boolean "cash"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "restaurant_id"
+    t.index ["restaurant_id"], name: "index_payment_methods_on_restaurant_id"
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string "brand_name"
+    t.string "corporate_name"
+    t.string "registration_number"
+    t.string "phone_number"
+    t.string "email"
+    t.string "address"
+    t.string "neighborhood"
+    t.string "city"
+    t.string "state"
+    t.string "zipcode"
+    t.string "description"
+    t.time "estimated_time"
+    t.string "cancelation_policy"
+    t.integer "owner_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_restaurants_on_owner_id"
+  end
+
+  add_foreign_key "restaurants", "owners"
 end
