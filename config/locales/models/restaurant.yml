@@ -19,6 +19,17 @@ pt-BR:
         description: Descrição do Restaurante
         estimated_time: Tempo Estimado de Entrega
         cancelation_policy: Política de Cancelamento
+        vegan_options: Possui opções veganas
+        vegetarian_options: Possui opções vegetarianas
+        gluten_free_options: Possui opções sem glúten
+  restaurant:
+    options:
+      vegan: "veganas"
+      vegetarian: "vegetarianas"
+      gluten_free: "sem glúten"
+    phrases:
+      has_options: "Possui opções %{options}."
+      lacks_options: "Não possui opções %{options}."
   restaurants:
     create:
       success: "%{brand_name}: Criado com sucesso!"

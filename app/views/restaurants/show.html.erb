@@ -1,0 +1,30 @@
+<h1> <%= @restaurant.brand_name %></h1>
+<p><%= @restaurant.description %></p>
+<div>
+    <dl>
+      <% if owner_signed_in? %>
+        <dt><%= Restaurant.human_attribute_name(:corporate_name) %>:</dt>
+        <dd><%= @restaurant.corporate_name %></dd>
+        <dt><%= Restaurant.human_attribute_name(:registration_number) %>:</dt>
+        <dd><%= @restaurant.registration_number %></dd>
+      <% end %>
+      <dt><%= Restaurant.human_attribute_name(:brand_name) %>:</dt>
+      <dd><%= @restaurant.brand_name %></dd>
+      <dt><%= Restaurant.human_attribute_name(:phone_number) %>:</dt>
+      <dd><%= @restaurant.phone_number %></dd>
+      <dt><%= Restaurant.human_attribute_name(:email) %>:</dt>
+      <dd><%= @restaurant.email %></dd>
+      <dt><%= Restaurant.human_attribute_name(:address) %>:</dt>
+      <dd><%= @restaurant.address %> - <%= @restaurant.neighborhood %>, <%= @restaurant.city %> - <%= @restaurant.state %>, <%= @restaurant.zipcode %></dd>
+      <dt><%= Restaurant.human_attribute_name(:cancelation_policy) %>:</dt>
+      <dd><%= @restaurant.cancelation_policy %></dd>
+      <dt><%= Restaurant.human_attribute_name(:estimated_time) %>:</dt>
+      <dd><%= @restaurant.estimated_time %></dd>
+    </dl>
+    <%= @options if @options.present? %><br>
+    <%= @lacks_options if @lacks_options.present? %>
+    <br>
+    <p><strong><%= t('views.new.payment_by')%></strong>: <%= @restaurant.payment_methods.map(&:method).join(' | ') %></p>
+</div>
+
+
