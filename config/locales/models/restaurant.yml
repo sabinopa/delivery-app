@@ -19,3 +19,7 @@ pt-BR:
         description: Descrição do Restaurante
         estimated_time: Tempo Estimado de Entrega
         cancelation_policy: Política de Cancelamento
+  restaurants:
+    create:
+      success: "%{brand_name}: Criado com sucesso!"
+      error: Restaurante não cadastrado.

@@ -2,6 +2,10 @@ require 'rails_helper'
 
 describe 'Owner creates restaurant' do
   it 'from the home page' do
+    PaymentMethod.create!(method: 'PIX')
+    PaymentMethod.create!(method: 'Cartão de Crédito')
+    PaymentMethod.create!(method: 'Cartão de Débito')
+    PaymentMethod.create!(method: 'Dinheiro')
     owner = Owner.create!(email: 'priscila@email.com', password: '12345678')
 
     login_as(owner, :scope => :owner)
@@ -27,8 +31,6 @@ describe 'Owner creates restaurant' do
     expect(page).to have_content 'Cartão de Crédito'
     expect(page).to have_content 'Cartão de Débito'
     expect(page).to have_content 'Dinheiro'
-    expect(page).to have_content 'Não Aceita'
-    expect(page).to have_content 'Aceita'
     expect(page).to have_button 'Salvar'
   end
 end

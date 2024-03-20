@@ -1,4 +1,4 @@
-ActiveRecord::Schema[7.1].define(version: 2024_03_19_230445) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_20_144249) do
   create_table "owners", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_19_230445) do
   create_table "payment_methods", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "type"
+    t.string "method"
   end
 
   create_table "payment_methods_restaurants", id: false, force: :cascade do |t|
