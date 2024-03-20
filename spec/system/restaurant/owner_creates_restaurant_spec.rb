@@ -33,4 +33,10 @@ describe 'Owner creates restaurant' do
     expect(page).to have_content 'Dinheiro'
     expect(page).to have_button 'Salvar'
   end
+
+  it 'must be authenticated' do
+    visit new_restaurant_path
+
+    expect(current_path).to eq new_owner_session_path
+  end
 end

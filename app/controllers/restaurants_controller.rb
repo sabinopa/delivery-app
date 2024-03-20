@@ -1,4 +1,5 @@
 class RestaurantsController < ApplicationController
+  before_action :authenticate_owner!
   def new
     @restaurant = Restaurant.new
   end
