@@ -34,6 +34,14 @@ describe 'Owner creates restaurant' do
     expect(page).to have_content 'Cartão de Crédito'
     expect(page).to have_content 'Cartão de Débito'
     expect(page).to have_content 'Dinheiro'
+    expect(page).to have_content 'Horário de Funcionamento'
+    expect(page).to have_content 'Segunda-feira'
+    expect(page).to have_content 'Terça-feira'
+    expect(page).to have_content 'Quarta-feira'
+    expect(page).to have_content 'Quinta-feira'
+    expect(page).to have_content 'Sexta-feira'
+    expect(page).to have_content 'Sábado'
+    expect(page).to have_content 'Domingo'
     expect(page).to have_button 'Salvar'
   end
 
@@ -74,8 +82,6 @@ describe 'Owner creates restaurant' do
     check 'Cartão de Débito'
     click_on 'Salvar'
 
-    new_restaurant = Restaurant.last
-    expect(new_restaurant).not_to be_nil
     expect(current_path).to eq restaurant_path(owner.restaurant.id)
     expect(page).to have_content 'Cantina Mediterrânea: Criado com sucesso!'
     expect(page).to have_content 'Telefone: (11) 99876-5432'
