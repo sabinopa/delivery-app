@@ -3,6 +3,7 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
+    @owner = current_owner
 
     options = []
     lacks_options = []
@@ -17,16 +18,19 @@ class RestaurantsController < ApplicationController
 
     @options =  options.any? ? I18n.t('restaurant.phrases.has_options', options: options.join(" | ")) : nil
     @lacks_options = lacks_options.any? ? I18n.t('restaurant.phrases.lacks_options', options: lacks_options.join(" | ")) : nil
-    @opening_hours = @restaurant.opening_hours
+
   end
 
   def new
+    if current_owner.restaurant.present?
+      flash[:alert] = t('.error')
+      redirect_to root_path
+    end
     @restaurant = Restaurant.new
-    @opening_hours = @restaurant.opening_hours.build
   end
 
   def create
-    @restaurant = current_owner.build_restaurant(restaurant_params)
+    @restaurant = current_owner.create_restaurant(restaurant_params)
     if @restaurant.save!
       flash[:notice] = t('.success', brand_name: @restaurant.brand_name)
       redirect_to restaurant_path(@restaurant)
@@ -39,9 +43,9 @@ class RestaurantsController < ApplicationController
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:brand_name, :corporate_name, :registration_number, :phone_number,
+    params.require(:restaurant).permit(:owner_id,:brand_name, :corporate_name, :registration_number, :phone_number,
                                       :email, :address, :neighborhood, :city, :state, :zipcode, :description,
                                       :estimated_time, :cancelation_policy, :vegan_options, :vegetarian_options,
-                                      :gluten_free_options, :owner_id, payment_method_ids: [])
+                                      :gluten_free_options, payment_method_ids: [])
   end
 end

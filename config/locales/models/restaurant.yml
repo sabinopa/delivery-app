@@ -16,7 +16,7 @@ pt-BR:
         city: Cidade
         state: Estado
         zipcode: CEP
-        description: Descrição do Restaurante
+        description: Descrição
         estimated_time: Tempo Estimado de Entrega
         cancelation_policy: Política de Cancelamento
         vegan_options: Possui opções veganas
@@ -31,6 +31,8 @@ pt-BR:
       has_options: "Possui opções %{options}."
       lacks_options: "Não possui opções %{options}."
   restaurants:
+    new:
+      error: Você já possui um restaurante cadastrado.
     create:
       success: "%{brand_name}: Criado com sucesso!"
       error: Restaurante não cadastrado.
