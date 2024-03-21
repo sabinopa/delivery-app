@@ -10,17 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_21_131757) do
-  create_table "opening_hours", force: :cascade do |t|
-    t.integer "restaurant_id", null: false
-    t.integer "day_of_week"
-    t.time "open_time"
-    t.time "close_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["restaurant_id"], name: "index_opening_hours_on_restaurant_id"
-  end
-
+ActiveRecord::Schema[7.1].define(version: 2024_03_20_175131) do
   create_table "owners", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -71,6 +61,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_21_131757) do
     t.index ["owner_id"], name: "index_restaurants_on_owner_id"
   end
 
-  add_foreign_key "opening_hours", "restaurants"
   add_foreign_key "restaurants", "owners"
 end

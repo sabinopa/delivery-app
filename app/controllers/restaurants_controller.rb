@@ -17,14 +17,16 @@ class RestaurantsController < ApplicationController
 
     @options =  options.any? ? I18n.t('restaurant.phrases.has_options', options: options.join(" | ")) : nil
     @lacks_options = lacks_options.any? ? I18n.t('restaurant.phrases.lacks_options', options: lacks_options.join(" | ")) : nil
+    @opening_hours = @restaurant.opening_hours
   end
 
   def new
     @restaurant = Restaurant.new
+    @opening_hours = @restaurant.opening_hours.build
   end
 
   def create
-    @restaurant = current_owner.create_restaurant(restaurant_params)
+    @restaurant = current_owner.build_restaurant(restaurant_params)
     if @restaurant.save!
       flash[:notice] = t('.success', brand_name: @restaurant.brand_name)
       redirect_to restaurant_path(@restaurant)

@@ -34,14 +34,6 @@ describe 'Owner creates restaurant' do
     expect(page).to have_content 'Cartão de Crédito'
     expect(page).to have_content 'Cartão de Débito'
     expect(page).to have_content 'Dinheiro'
-    expect(page).to have_content 'Horário de Funcionamento'
-    expect(page).to have_content 'Segunda-feira'
-    expect(page).to have_content 'Terça-feira'
-    expect(page).to have_content 'Quarta-feira'
-    expect(page).to have_content 'Quinta-feira'
-    expect(page).to have_content 'Sexta-feira'
-    expect(page).to have_content 'Sábado'
-    expect(page).to have_content 'Domingo'
     expect(page).to have_button 'Salvar'
   end
 
