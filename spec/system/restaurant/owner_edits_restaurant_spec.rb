@@ -118,4 +118,50 @@ describe 'Owner edits restaurant' do
     expect(page).to have_content 'Pagamentos por: Cartão de Crédito | Cartão de Débito'
     expect(page).to have_content 'Possui opções sem glúten.'
   end
+
+  it 'with incomplete data' do
+    pix = PaymentMethod.create!(method: 'PIX')
+    credito = PaymentMethod.create!(method: 'Cartão de Crédito')
+    debito = PaymentMethod.create!(method: 'Cartão de Débito')
+    owner = Owner.create!(email: 'priscila@email.com', password: '12345678')
+    restaurante = Restaurant.create!(owner: owner, brand_name: 'Cantina Mediterrânea', corporate_name: 'Sabores do Mar Mediterrâneo Ltda',
+                                    registration_number: '98.765.432/0001-11', phone_number: '(11) 99876-5432',
+                                    email: 'contato@cantinamediterranea.com.br', address: 'Rua das Oliveiras, 5678',
+                                    neighborhood: 'Bairro Italiano', city: 'Rio de Janeiro', state: 'RJ', zipcode: '21000-000',
+                                    description: 'A Cantina Mediterrânea traz os mais frescos ingredientes do mar para a sua mesa,
+                                    com pratos inspirados na rica culinária mediterrânea.', cancelation_policy: 'Cancelamentos podem
+                                    ser feitos até 48 horas antes da reserva.', estimated_time: 50, vegan_options: true,
+                                    vegetarian_options: true, gluten_free_options: false)
+                                    restaurante.payment_methods << [pix, credito, debito]
+
+    login_as(owner, :scope => :owner)
+    visit edit_restaurant_path(restaurante.id)
+    fill_in 'Nome Fantasia', with: ''
+    fill_in 'Razão Social', with: ''
+    fill_in 'CNPJ', with: ''
+    fill_in 'Telefone', with: ''
+    fill_in 'E-mail', with: ''
+    fill_in 'Endereço', with: ''
+    fill_in 'Bairro', with: ''
+    fill_in 'Cidade', with: ''
+    fill_in 'Estado', with: ''
+    fill_in 'CEP', with: ''
+    fill_in 'Descrição', with: ''
+    fill_in 'Política de Cancelamento', with: ''
+    fill_in 'Tempo Estimado de Entrega', with: ''
+    click_on 'Salvar'
+
+    expect(page).to have_content 'Não foi possível atualizar os dados do restaurante.'
+    expect(page).to have_content 'Nome Fantasia não pode ficar em branco'
+    expect(page).to have_content 'Razão Social não pode ficar em branco'
+    expect(page).to have_content 'CNPJ não pode ficar em branco'
+    expect(page).to have_content 'Telefone não pode ficar em branco'
+    expect(page).to have_content 'E-mail não pode ficar em branco'
+    expect(page).to have_content 'Endereço não pode ficar em branco'
+    expect(page).to have_content 'Bairro não pode ficar em branco'
+    expect(page).to have_content 'Cidade não pode ficar em branco'
+    expect(page).to have_content 'Estado não pode ficar em branco'
+    expect(page).to have_content 'CEP não pode ficar em branco'
+    expect(page).to have_content 'Descrição não pode ficar em branco'
+  end
 end
