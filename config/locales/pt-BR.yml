@@ -147,6 +147,8 @@ pt-BR:
   helpers:
     select:
       prompt: Por favor selecione
+    buttons:
+      back: Voltar
     submit:
       log_in: Entrar
       log_out: Sair

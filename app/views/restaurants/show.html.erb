@@ -26,5 +26,6 @@
     <br>
     <p><strong><%= t('views.new.payment_by')%></strong>: <%= @restaurant.payment_methods.map(&:method).join(' | ') %></p>
 </div>
+    <%= link_to t('helpers.buttons.back'), root_path %>%
 
 
