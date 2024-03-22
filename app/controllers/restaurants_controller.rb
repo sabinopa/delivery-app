@@ -1,9 +1,10 @@
 class RestaurantsController < ApplicationController
   before_action :authenticate_owner!, only: [:new, :create, :edit, :update]
   before_action :force_restaurant_creation_for_owners, only: [:show]
+  before_action :set_restaurant, only: [:show, :edit, :update]
+  before_action :check_owner, only: [:edit, :update]
 
   def show
-    @restaurant = Restaurant.find(params[:id])
     @owner = current_owner
 
     options = []
@@ -42,16 +43,9 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
-    @restaurant = Restaurant.find(params[:id])
-    if current_owner != @restaurant.owner
-      flash[:alert] = t('.error')
-      redirect_to root_path
-    end
   end
 
   def update
-    @restaurant = Restaurant.find(params[:id])
-
     if @restaurant.update(restaurant_params)
       flash[:notice] = t('.success', brand_name: @restaurant.brand_name)
       redirect_to @restaurant
@@ -68,5 +62,16 @@ class RestaurantsController < ApplicationController
                                       :email, :address, :neighborhood, :city, :state, :zipcode, :description,
                                       :estimated_time, :cancelation_policy, :vegan_options, :vegetarian_options,
                                       :gluten_free_options, payment_method_ids: [])
+  end
+
+  def check_owner
+    if current_owner != @restaurant.owner
+      flash[:alert] = t('.error')
+      redirect_to root_path
+    end
+  end
+
+  def set_restaurant
+    @restaurant = Restaurant.find(params[:id])
   end
 end
