@@ -43,6 +43,10 @@ class RestaurantsController < ApplicationController
 
   def edit
     @restaurant = Restaurant.find(params[:id])
+    if current_owner != @restaurant.owner
+      flash[:alert] = t('.error')
+      redirect_to root_path
+    end
   end
 
   def update

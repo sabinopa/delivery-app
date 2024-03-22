@@ -37,6 +37,8 @@ pt-BR:
     create:
       success: "%{brand_name}: Criado com sucesso!"
       error: Restaurante não cadastrado.
+    edit:
+      error: 'Apenas o proprietário pode editar esse restaurante.'
     update:
       edit: Edite os dados do seu restaurante
       success: "%{brand_name}: Atualizado com sucesso!"
