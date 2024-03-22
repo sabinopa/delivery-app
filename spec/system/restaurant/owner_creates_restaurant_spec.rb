@@ -121,7 +121,7 @@ describe 'Owner creates restaurant' do
     fill_in 'CEP', with: '21000-000'
     fill_in 'Descrição', with: 'A Cantina Mediterrânea traz os mais frescos ingredientes do mar para a sua mesa, com pratos inspirados na rica culinária mediterrânea.'
     fill_in 'Política de Cancelamento', with: 'Cancelamentos podem ser feitos até 48 horas antes da reserva.'
-    fill_in 'Tempo Estimado de Entrega', with: '50:00'
+    fill_in 'Tempo Estimado de Entrega', with: '50'
     check 'Possui opções veganas'
     check 'Possui opções vegetarianas'
     uncheck 'Possui opções sem glúten'
@@ -152,7 +152,7 @@ describe 'Owner creates restaurant' do
                                     neighborhood: 'Bairro Italiano', city: 'Rio de Janeiro', state: 'RJ', zipcode: '21000-000',
                                     description: 'A Cantina Mediterrânea traz os mais frescos ingredientes do mar para a sua mesa,
                                     com pratos inspirados na rica culinária mediterrânea.', cancelation_policy: 'Cancelamentos podem
-                                    ser feitos até 48 horas antes da reserva.', estimated_time: '00:50:00', vegan_options: true,
+                                    ser feitos até 48 horas antes da reserva.', estimated_time: 50, vegan_options: true,
                                     vegetarian_options: true, gluten_free_options: false)
                                     restaurante.payment_methods << [pix, credito, debito]
     login_as(owner, :scope => :owner)

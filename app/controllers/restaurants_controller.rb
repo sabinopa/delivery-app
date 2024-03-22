@@ -31,7 +31,7 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    @restaurant = current_owner.create_restaurant(restaurant_params)
+    @restaurant = current_owner.build_restaurant(restaurant_params)
     if @restaurant.save
       flash[:notice] = t('.success', brand_name: @restaurant.brand_name)
       redirect_to restaurant_path(@restaurant)

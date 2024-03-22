@@ -19,7 +19,7 @@
       <dt><%= Restaurant.human_attribute_name(:cancelation_policy) %>:</dt>
       <dd><%= @restaurant.cancelation_policy %></dd>
       <dt><%= Restaurant.human_attribute_name(:estimated_time) %>:</dt>
-      <dd><%= @restaurant.estimated_time %></dd>
+      <dd><%= @restaurant.estimated_time %> <%= t('views.show.minutes') %></dd>
     </dl>
     <%= @options if @options.present? %><br>
     <%= @lacks_options if @lacks_options.present? %>

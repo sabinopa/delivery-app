@@ -37,3 +37,6 @@ pt-BR:
     create:
       success: "%{brand_name}: Criado com sucesso!"
       error: Restaurante não cadastrado.
+  views:
+    show:
+      minutes: minutos
