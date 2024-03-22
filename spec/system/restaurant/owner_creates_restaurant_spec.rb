@@ -29,8 +29,7 @@ describe 'Owner creates restaurant' do
     owner = Owner.create!(email: 'priscila@email.com', password: '12345678')
 
     login_as(owner, :scope => :owner)
-    visit root_path
-    click_on 'Cadastrar restaurante'
+    visit new_restaurant_path
 
     expect(page).to have_content 'Cadastre seu restaurante'
     expect(page).to have_field 'Nome Fantasia'
@@ -61,8 +60,7 @@ describe 'Owner creates restaurant' do
     owner = Owner.create!(email: 'priscila@email.com', password: '12345678')
 
     login_as(owner, :scope => :owner)
-    visit root_path
-    click_on 'Cadastrar restaurante'
+    visit new_restaurant_path
     fill_in 'Nome Fantasia', with: ''
     fill_in 'Razão Social', with: ''
     fill_in 'CNPJ', with: ''
@@ -78,7 +76,7 @@ describe 'Owner creates restaurant' do
     fill_in 'Tempo Estimado de Entrega', with: ''
     click_on 'Salvar'
 
-    expect(page).to have_content 'Não foi possível cadastrar restaurante.'
+    expect(page).to have_content 'Restaurante não cadastrado.'
     expect(page).to have_content 'Nome Fantasia não pode ficar em branco'
     expect(page).to have_content 'Razão Social não pode ficar em branco'
     expect(page).to have_content 'CNPJ não pode ficar em branco'
@@ -90,7 +88,16 @@ describe 'Owner creates restaurant' do
     expect(page).to have_content 'Estado não pode ficar em branco'
     expect(page).to have_content 'CEP não pode ficar em branco'
     expect(page).to have_content 'Descrição não pode ficar em branco'
-    expect(page).to have_content 'Tempo Estimado de Entrega não pode ficar em branco'
+  end
+
+  it 'and cant visit homepage before registering a restaurant' do
+    owner = Owner.create!(email: 'priscila@email.com', password: '12345678')
+
+    login_as(owner, :scope => :owner)
+    visit root_path
+
+    expect(page).to have_content 'Você deve criar um restaurante antes de acessar outras páginas.'
+    expect(current_path).to eq new_restaurant_path
   end
 
   it 'successfully' do
@@ -101,8 +108,7 @@ describe 'Owner creates restaurant' do
     owner = Owner.create!(email: 'priscila@email.com', password: '12345678')
 
     login_as(owner, :scope => :owner)
-    visit root_path
-    click_on 'Cadastrar restaurante'
+    visit new_restaurant_path
     fill_in 'Nome Fantasia', with: 'Cantina Mediterrânea'
     fill_in 'Razão Social', with: 'Sabores do Mar Mediterrâneo Ltda'
     fill_in 'CNPJ', with: '98.765.432/0001-11'
@@ -115,7 +121,7 @@ describe 'Owner creates restaurant' do
     fill_in 'CEP', with: '21000-000'
     fill_in 'Descrição', with: 'A Cantina Mediterrânea traz os mais frescos ingredientes do mar para a sua mesa, com pratos inspirados na rica culinária mediterrânea.'
     fill_in 'Política de Cancelamento', with: 'Cancelamentos podem ser feitos até 48 horas antes da reserva.'
-    fill_in 'Tempo Estimado de Entrega', with: '00:50:00'
+    fill_in 'Tempo Estimado de Entrega', with: '50:00'
     check 'Possui opções veganas'
     check 'Possui opções vegetarianas'
     uncheck 'Possui opções sem glúten'

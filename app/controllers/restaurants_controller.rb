@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :authenticate_owner!, only: [:new, :create]
+  before_action :force_restaurant_creation_for_owners, only: [:show]
 
   def show
     @restaurant = Restaurant.find(params[:id])
@@ -31,11 +32,11 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = current_owner.create_restaurant(restaurant_params)
-    if @restaurant.save!
+    if @restaurant.save
       flash[:notice] = t('.success', brand_name: @restaurant.brand_name)
       redirect_to restaurant_path(@restaurant)
     else
-      flash.now[:alert] = t('.error')
+      flash[:alert] = t('.error')
       render :new
     end
   end

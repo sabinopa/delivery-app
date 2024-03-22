@@ -224,3 +224,6 @@ pt-BR:
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
     pm: pm
+  actions:
+    force_restaurant_creation_for_owners:
+      redirect: "Você deve criar um restaurante antes de acessar outras páginas."

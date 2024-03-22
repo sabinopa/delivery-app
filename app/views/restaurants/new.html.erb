@@ -1,3 +1,13 @@
+
+<% if(@restaurant.errors.any?) %>
+  <p><%= t('errors.messages.verify_error') %></p>
+  <ul>
+    <% @restaurant.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <h1>Cadastre seu restaurante</h1>
 <%= form_with model: @restaurant do |form| %>
 
@@ -58,7 +68,7 @@
   <br>
   <div>
     <%= form.label :estimated_time %>
-    <%= form.time_select :estimated_time, { prompt: { hour: 'horas', minute: 'minutos' } }, {class: "form-control"} %>
+    <%= form.text_area :estimated_time, { prompt: { hour: 'horas', minute: 'minutos' } } %>
   </div>
   <br>
   <div>

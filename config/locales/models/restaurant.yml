@@ -32,6 +32,7 @@ pt-BR:
       lacks_options: "Não possui opções %{options}."
   restaurants:
     new:
+      redirect: Você deve criar um restaurante antes de acessar outras páginas.
       error: Você já possui um restaurante cadastrado.
     create:
       success: "%{brand_name}: Criado com sucesso!"
