@@ -155,6 +155,7 @@ pt-BR:
       create: Criar
       submit: Salvar
       update: Atualizar
+      edit: Editar
   number:
     currency:
       format:

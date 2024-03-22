@@ -37,6 +37,12 @@ pt-BR:
     create:
       success: "%{brand_name}: Criado com sucesso!"
       error: Restaurante não cadastrado.
+    update:
+      edit: Edite os dados do seu restaurante
+      success: "%{brand_name}: Atualizado com sucesso!"
+      error: Não foi possível atualizar os dados do restaurante.
   views:
+    new:
+      register: Cadastre seu restaurante
     show:
       minutes: minutos

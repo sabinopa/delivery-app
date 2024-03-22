@@ -42,11 +42,19 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
-
+    @restaurant = Restaurant.find(params[:id])
   end
 
   def update
+    @restaurant = Restaurant.find(params[:id])
 
+    if @restaurant.update(restaurant_params)
+      flash[:notice] = t('.success', brand_name: @restaurant.brand_name)
+      redirect_to @restaurant
+    else
+      flash.now[:alert] = t('.error')
+      render :edit
+    end
   end
 
   private

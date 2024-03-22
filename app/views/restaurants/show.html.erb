@@ -1,4 +1,4 @@
-<h1> <%= @restaurant.brand_name %></h1>
+<h1><%= @restaurant.brand_name %></h1>
 <p><%= @restaurant.description %></p>
 <div>
     <dl>
@@ -26,6 +26,9 @@
     <br>
     <p><strong><%= t('views.new.payment_by')%></strong>: <%= @restaurant.payment_methods.map(&:method).join(' | ') %></p>
 </div>
-    <%= link_to t('helpers.buttons.back'), root_path %>%
+<% if owner_signed_in? && @restaurant.owner == current_owner %>
+    <%= link_to t('helpers.submit.edit'), edit_restaurant_path(@restaurant) %><br>
+<% end %>
+    <%= link_to t('helpers.buttons.back'), root_path %>
 
 
