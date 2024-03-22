@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :authenticate_owner!, only: [:new, :create]
+  before_action :authenticate_owner!, only: [:new, :create, :edit, :update]
   before_action :force_restaurant_creation_for_owners, only: [:show]
 
   def show
@@ -39,6 +39,14 @@ class RestaurantsController < ApplicationController
       flash[:alert] = t('.error')
       render :new
     end
+  end
+
+  def edit
+
+  end
+
+  def update
+
   end
 
   private
