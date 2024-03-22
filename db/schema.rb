@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_20_175131) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_22_191259) do
   create_table "owners", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -50,7 +50,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_20_175131) do
     t.string "state"
     t.string "zipcode"
     t.string "description"
-    t.time "estimated_time"
+    t.integer "estimated_time"
     t.string "cancelation_policy"
     t.integer "owner_id", null: false
     t.datetime "created_at", null: false
