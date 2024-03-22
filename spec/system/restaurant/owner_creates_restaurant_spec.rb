@@ -1,7 +1,27 @@
 require 'rails_helper'
 
 describe 'Owner creates restaurant' do
-  it 'from the home page' do
+  it 'must be authenticated' do
+    visit new_restaurant_path
+
+    expect(current_path).to eq new_owner_session_path
+  end
+
+  it 'by being redirected after registration' do
+    visit root_path
+    click_on 'Entrar'
+    click_on 'Criar uma conta'
+    within 'form' do
+      fill_in 'E-mail', with: 'priscila@email.com'
+      fill_in 'Senha', with: '12345678'
+      fill_in 'Confirme sua senha', with: '12345678'
+      click_on 'Criar uma conta'
+    end
+
+    expect(current_path).to eq new_restaurant_path
+  end
+
+  it 'and sees the fields to create a restaurant' do
     PaymentMethod.create!(method: 'PIX')
     PaymentMethod.create!(method: 'Cartão de Crédito')
     PaymentMethod.create!(method: 'Cartão de Débito')
@@ -37,10 +57,40 @@ describe 'Owner creates restaurant' do
     expect(page).to have_button 'Salvar'
   end
 
-  it 'must be authenticated' do
-    visit new_restaurant_path
+  it 'with incomplete data' do
+    owner = Owner.create!(email: 'priscila@email.com', password: '12345678')
 
-    expect(current_path).to eq new_owner_session_path
+    login_as(owner, :scope => :owner)
+    visit root_path
+    click_on 'Cadastrar restaurante'
+    fill_in 'Nome Fantasia', with: ''
+    fill_in 'Razão Social', with: ''
+    fill_in 'CNPJ', with: ''
+    fill_in 'Telefone', with: ''
+    fill_in 'E-mail', with: ''
+    fill_in 'Endereço', with: ''
+    fill_in 'Bairro', with: ''
+    fill_in 'Cidade', with: ''
+    fill_in 'Estado', with: ''
+    fill_in 'CEP', with: ''
+    fill_in 'Descrição', with: ''
+    fill_in 'Política de Cancelamento', with: ''
+    fill_in 'Tempo Estimado de Entrega', with: ''
+    click_on 'Salvar'
+
+    expect(page).to have_content 'Não foi possível cadastrar restaurante.'
+    expect(page).to have_content 'Nome Fantasia não pode ficar em branco'
+    expect(page).to have_content 'Razão Social não pode ficar em branco'
+    expect(page).to have_content 'CNPJ não pode ficar em branco'
+    expect(page).to have_content 'Telefone não pode ficar em branco'
+    expect(page).to have_content 'E-mail não pode ficar em branco'
+    expect(page).to have_content 'Endereço não pode ficar em branco'
+    expect(page).to have_content 'Bairro não pode ficar em branco'
+    expect(page).to have_content 'Cidade não pode ficar em branco'
+    expect(page).to have_content 'Estado não pode ficar em branco'
+    expect(page).to have_content 'CEP não pode ficar em branco'
+    expect(page).to have_content 'Descrição não pode ficar em branco'
+    expect(page).to have_content 'Tempo Estimado de Entrega não pode ficar em branco'
   end
 
   it 'successfully' do
@@ -84,41 +134,6 @@ describe 'Owner creates restaurant' do
     expect(page).to have_content 'Não possui opções sem glúten.'
   end
 
-  it 'with incomplete data' do
-    owner = Owner.create!(email: 'priscila@email.com', password: '12345678')
-
-    login_as(owner, :scope => :owner)
-    visit root_path
-    click_on 'Cadastrar restaurante'
-    fill_in 'Nome Fantasia', with: ''
-    fill_in 'Razão Social', with: ''
-    fill_in 'CNPJ', with: ''
-    fill_in 'Telefone', with: ''
-    fill_in 'E-mail', with: ''
-    fill_in 'Endereço', with: ''
-    fill_in 'Bairro', with: ''
-    fill_in 'Cidade', with: ''
-    fill_in 'Estado', with: ''
-    fill_in 'CEP', with: ''
-    fill_in 'Descrição', with: ''
-    fill_in 'Política de Cancelamento', with: ''
-    fill_in 'Tempo Estimado de Entrega', with: ''
-    click_on 'Salvar'
-
-    expect(page).to have_content 'Não foi possível cadastrar restaurante.'
-    expect(page).to have_content 'Nome Fantasia não pode ficar em branco'
-    expect(page).to have_content 'Razão Social não pode ficar em branco'
-    expect(page).to have_content 'CNPJ não pode ficar em branco'
-    expect(page).to have_content 'Telefone não pode ficar em branco'
-    expect(page).to have_content 'E-mail não pode ficar em branco'
-    expect(page).to have_content 'Endereço não pode ficar em branco'
-    expect(page).to have_content 'Bairro não pode ficar em branco'
-    expect(page).to have_content 'Cidade não pode ficar em branco'
-    expect(page).to have_content 'Estado não pode ficar em branco'
-    expect(page).to have_content 'CEP não pode ficar em branco'
-    expect(page).to have_content 'Descrição não pode ficar em branco'
-    expect(page).to have_content 'Tempo Estimado de Entrega não pode ficar em branco'
-  end
 
   it 'already has a restaurant registered' do
     pix = PaymentMethod.create!(method: 'PIX')
