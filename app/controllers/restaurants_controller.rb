@@ -1,8 +1,8 @@
 class RestaurantsController < ApplicationController
-  before_action :authenticate_owner!, only: [:new, :create, :edit, :update]
-  before_action :force_restaurant_creation_for_owners, only: [:show]
-  before_action :set_restaurant, only: [:show, :edit, :update]
-  before_action :check_owner, only: [:edit, :update]
+  before_action :authenticate_owner!, only: [:new, :create, :edit, :update, :inactive, :active]
+  before_action :force_restaurant_creation_for_owners, only: [:show, :inactive, :active]
+  before_action :set_restaurant, only: [:show, :edit, :update, :inactive, :active]
+  before_action :check_owner, only: [:edit, :update, :inactive, :active]
 
   def show
     @owner = current_owner
@@ -20,7 +20,6 @@ class RestaurantsController < ApplicationController
 
     @options =  options.any? ? I18n.t('restaurant.phrases.has_options', options: options.join(" | ")) : nil
     @lacks_options = lacks_options.any? ? I18n.t('restaurant.phrases.lacks_options', options: lacks_options.join(" | ")) : nil
-
   end
 
   def new
@@ -53,6 +52,18 @@ class RestaurantsController < ApplicationController
       flash.now[:alert] = t('.error')
       render :edit
     end
+  end
+
+  def inactive
+    @restaurant.inactive!
+    flash[:alert] = t('.success', brand_name: @restaurant.brand_name)
+    redirect_to @restaurant
+  end
+
+  def active
+    @restaurant.active!
+    flash[:notice] = t('.success', brand_name: @restaurant.brand_name)
+    redirect_to @restaurant
   end
 
   private

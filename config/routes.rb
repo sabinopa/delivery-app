@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   }
   root to: 'home#index'
 
-  resources :restaurants, only: [:new, :create, :show, :edit, :update]
-
+  resources :restaurants, except: [:destroy] do
+    post 'inactive', on: :member
+    post 'active', on: :member
+  end
 end

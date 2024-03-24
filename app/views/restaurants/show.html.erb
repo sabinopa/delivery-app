@@ -2,7 +2,14 @@
 <p><%= @restaurant.description %></p>
 <div>
     <dl>
-      <% if owner_signed_in? %>
+      <% if owner_signed_in?  && current_owner.restaurant.present? && current_owner == @restaurant.owner %>
+        <% if @restaurant.active? %>
+          <%= button_to t('views.show.turn_inactive'), inactive_restaurant_path(@restaurant) %>
+        <% else %>
+          <%= button_to t('views.show.turn_active'), active_restaurant_path(@restaurant) %>
+        <% end %>
+        <dt><%= Restaurant.human_attribute_name(:status) %>:</dt>
+        <dd><%= I18n.t("restaurant.status.#{@restaurant.status}") %></dd>
         <dt><%= Restaurant.human_attribute_name(:corporate_name) %>:</dt>
         <dd><%= @restaurant.corporate_name %></dd>
         <dt><%= Restaurant.human_attribute_name(:registration_number) %>:</dt>

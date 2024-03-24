@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_22_191259) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_24_192830) do
   create_table "owners", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -58,6 +58,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_22_191259) do
     t.boolean "vegan_options"
     t.boolean "vegetarian_options"
     t.boolean "gluten_free_options"
+    t.integer "status", default: 0
     t.index ["owner_id"], name: "index_restaurants_on_owner_id"
   end
 

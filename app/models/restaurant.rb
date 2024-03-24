@@ -7,4 +7,6 @@ class Restaurant < ApplicationRecord
             presence: true
 
   accepts_nested_attributes_for :payment_methods
+
+  enum status: { active: 0, inactive: 1 }
 end

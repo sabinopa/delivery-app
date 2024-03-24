@@ -27,6 +27,9 @@ pt-BR:
       vegan: "veganas"
       vegetarian: "vegetarianas"
       gluten_free: "sem glúten"
+    status:
+      active: Restaurante ativo
+      inactive: Restaurante inativo
     phrases:
       has_options: "Possui opções %{options}."
       lacks_options: "Não possui opções %{options}."
@@ -43,8 +46,16 @@ pt-BR:
       edit: Edite os dados do seu restaurante
       success: "%{brand_name}: Atualizado com sucesso!"
       error: Não foi possível atualizar os dados do restaurante.
+    inactive:
+      success: "%{brand_name}: Está inativo!"
+    active:
+      success: "%{brand_name}: Está ativo!"
   views:
     new:
       register: Cadastre seu restaurante
     show:
       minutes: minutos
+      active: Restaurante ativo.
+      inactive: Restaurante inativo.
+      turn_active: Ativar restaurante
+      turn_inactive: Desativar restaurante
