@@ -1,5 +1,5 @@
 <%= current_owner.email %> |
 <%= button_to t('helpers.submit.log_out'), destroy_owner_session_path, method: :delete %>
-<% if @restaurant.persisted? %>
+<% if @restaurant&.persisted? %>
   <%= link_to 'Meu Restaurante', restaurant_path(@restaurant) %>
 <% end %>

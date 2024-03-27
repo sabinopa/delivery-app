@@ -1,1 +1,7 @@
-<% t('views.show.each', name: @menu.name) %>
+<h2><%= t('views.show.see', name: @menu.name) %></h2>
+<p><%= @menu.description %></p>
+
+<%= link_to t('views.show.add_items'), new_menu_item_path(@menu) %>
+
+<%= link_to t('helpers.buttons.back'), restaurant_path(@restaurant) %>
+

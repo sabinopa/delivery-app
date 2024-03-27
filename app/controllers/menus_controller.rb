@@ -1,9 +1,14 @@
 class MenusController < ApplicationController
   before_action :authenticate_owner!
-  before_action :set_restaurant, only: [:new, :create, :index, :show]
+  before_action :set_restaurant, only: [:new, :create, :index]
 
   def index
     @menus = Menu.all
+  end
+
+  def show
+    @menu = Menu.find(params[:id])
+    @restaurant = @menu.restaurant
   end
 
   def new
@@ -21,9 +26,6 @@ class MenusController < ApplicationController
     end
   end
 
-  def show
-    @menu = Menu.find(params[:id])
-  end
 
   private
 
