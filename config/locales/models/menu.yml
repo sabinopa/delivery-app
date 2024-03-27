@@ -22,6 +22,7 @@ pt-BR:
   menus:
     new:
       redirect: Você deve criar um restaurante antes de acessar outras páginas.
+      error: 'Apenas o proprietário pode criar menus para esse restaurante.'
     create:
       success: Novo menu criado com sucesso!
       error: Não foi possível criar novo menu.

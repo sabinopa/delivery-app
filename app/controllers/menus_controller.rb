@@ -2,7 +2,7 @@ class MenusController < ApplicationController
   before_action :authenticate_owner!, except: [:show]
   before_action :set_menu, only: [:show, :edit, :update]
   before_action :set_restaurant, only: [:new, :create, :index, :edit, :update]
-  before_action :check_owner, only: [:edit, :update]
+  before_action :check_owner, only: [:new, :create, :edit, :update]
 
   def index
     @menus = @restaurant.menus.includes(:items)
@@ -61,7 +61,7 @@ class MenusController < ApplicationController
   end
 
   def check_owner
-    if current_owner != @menu.restaurant.owner
+    if current_owner != @restaurant.owner
       flash[:alert] = t('.error')
       redirect_to root_path
     end
