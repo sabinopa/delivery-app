@@ -3,6 +3,7 @@
 <div>
     <dl>
       <% if owner_signed_in?  && current_owner.restaurant.present? && current_owner == @restaurant.owner %>
+          <%= link_to t('views.show.create_menu'), new_restaurant_menu_path(@restaurant) %>
         <% if @restaurant.active? %>
           <%= button_to t('views.show.turn_inactive'), inactive_restaurant_path(@restaurant) %>
         <% else %>

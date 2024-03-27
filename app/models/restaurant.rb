@@ -1,5 +1,6 @@
 class Restaurant < ApplicationRecord
   belongs_to :owner
+  has_many :menus
   has_and_belongs_to_many :payment_methods
 
   validates :brand_name, :corporate_name, :registration_number, :phone_number,

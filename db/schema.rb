@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_24_192830) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_26_194724) do
+  create_table "menus", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "restaurant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_menus_on_restaurant_id"
+  end
+
   create_table "owners", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -62,5 +71,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_24_192830) do
     t.index ["owner_id"], name: "index_restaurants_on_owner_id"
   end
 
+  add_foreign_key "menus", "restaurants"
   add_foreign_key "restaurants", "owners"
 end

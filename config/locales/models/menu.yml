@@ -1,0 +1,34 @@
+pt-BR:
+  activerecord:
+    models:
+      menus:
+        one: Menu
+        other: Menus
+    attributes:
+      menu:
+        name: Nome
+        description: Descrição
+  menu:
+    # options:
+    #   vegan: "veganas"
+    #   vegetarian: "vegetarianas"
+    #   gluten_free: "sem glúten"
+    # status:
+    #   active: Restaurante ativo
+    #   inactive: Restaurante inativo
+    # phrases:
+    #   has_options: "Possui opções %{options}."
+    #   lacks_options: "Não possui opções %{options}."
+  menus:
+    new:
+      redirect: Você deve criar um restaurante antes de acessar outras páginas.
+    create:
+      success: Novo menu criado com sucesso!
+      error: Não foi possível criar novo menu.
+  views:
+    index:
+      list: "Menus de %{brand_name}"
+    new:
+      create_menu: Crie seu novo menu
+    show:
+      see: "Menu de %{name}"

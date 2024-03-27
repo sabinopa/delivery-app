@@ -36,7 +36,7 @@ class RestaurantsController < ApplicationController
       flash[:notice] = t('.success', brand_name: @restaurant.brand_name)
       redirect_to restaurant_path(@restaurant)
     else
-      flash[:alert] = t('.error')
+      flash.now[:alert] = t('.error')
       render :new
     end
   end

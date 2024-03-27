@@ -59,3 +59,4 @@ pt-BR:
       inactive: Restaurante inativo.
       turn_active: Ativar restaurante
       turn_inactive: Desativar restaurante
+      create_menu: 'Criar novo menu'

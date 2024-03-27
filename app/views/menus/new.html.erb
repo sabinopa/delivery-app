@@ -1,0 +1,24 @@
+<h1><%= t('views.new.create_menu') %></h1>
+
+<% if(@menu.errors.any?) %>
+  <p><%= t('errors.messages.verify_error') %></p>
+  <ul>
+    <% @menu.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: [@restaurant, @menu] do |form| %>
+  <div>
+    <%= form.label :name %>:
+    <%= form.text_field :name %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :description %>:
+    <%= form.text_area :description %>
+  </div>
+  <br>
+  <%= form.submit t('helpers.submit.submit') %>
+<% end %>
