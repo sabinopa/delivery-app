@@ -2,6 +2,7 @@ class MenusController < ApplicationController
   before_action :authenticate_owner!, except: [:show]
   before_action :set_menu, only: [:show, :edit, :update]
   before_action :set_restaurant, only: [:new, :create, :index, :edit, :update]
+  before_action :check_owner, only: [:edit, :update]
 
   def index
     @menus = Menu.all
@@ -56,5 +57,12 @@ class MenusController < ApplicationController
 
   def menu_params
     params.require(:menu).permit(:name, :description)
+  end
+
+  def check_owner
+    if current_owner != @menu.restaurant.owner
+      flash[:alert] = t('.error')
+      redirect_to root_path
+    end
   end
 end

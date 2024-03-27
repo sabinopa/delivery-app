@@ -25,6 +25,8 @@ pt-BR:
     create:
       success: Novo menu criado com sucesso!
       error: Não foi possível criar novo menu.
+    edit:
+      error: 'Apenas o proprietário pode editar esse menu.'
     update:
       edit: Edite os dados do menu
       success: "%{name}: Atualizado com sucesso!"
