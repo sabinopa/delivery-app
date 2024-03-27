@@ -1,4 +1,4 @@
-<h1><%= t('views.new.create_menu') %></h1>
+<h1><%= t('views.edit.edit', name: @menu.name) %></h1>
 
 <% if(@menu.errors.any?) %>
   <p><%= t('errors.messages.verify_error') %></p>
@@ -9,7 +9,7 @@
   </ul>
 <% end %>
 
-<%= form_with model: [@restaurant, @menu] do |form| %>
+<%= form_with model: @menu do |form| %>
   <div>
     <%= form.label :name %>:
     <%= form.text_field :name %>
@@ -22,4 +22,3 @@
   <br>
   <%= form.submit t('helpers.submit.submit') %>
 <% end %>
-

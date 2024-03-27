@@ -1,13 +1,13 @@
 class MenusController < ApplicationController
-  before_action :authenticate_owner!
-  before_action :set_restaurant, only: [:new, :create, :index]
+  before_action :authenticate_owner!, except: [:show]
+  before_action :set_menu, only: [:show, :edit, :update]
+  before_action :set_restaurant, only: [:new, :create, :index, :edit, :update]
 
   def index
     @menus = Menu.all
   end
 
   def show
-    @menu = Menu.find(params[:id])
     @restaurant = @menu.restaurant
   end
 
@@ -26,11 +26,32 @@ class MenusController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @menu.update(menu_params)
+      flash[:notice] = t('.success', name: @menu.name)
+      redirect_to @menu
+    else
+      flash.now[:alert] = t('.error')
+      render :edit
+    end
+  end
+
 
   private
 
+  def set_menu
+    @menu = Menu.find(params[:id])
+  end
+
   def set_restaurant
-    @restaurant = Restaurant.find(params[:restaurant_id])
+    if params[:restaurant_id]
+      @restaurant = Restaurant.find(params[:restaurant_id])
+    elsif @menu
+      @restaurant = @menu.restaurant
+    end
   end
 
   def menu_params

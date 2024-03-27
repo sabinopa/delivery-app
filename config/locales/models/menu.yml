@@ -25,6 +25,10 @@ pt-BR:
     create:
       success: Novo menu criado com sucesso!
       error: Não foi possível criar novo menu.
+    update:
+      edit: Edite os dados do menu
+      success: "%{name}: Atualizado com sucesso!"
+      error: Não foi possível atualizar os dados do restaurante.
   views:
     index:
       list: "Menus de %{brand_name}"
@@ -33,3 +37,5 @@ pt-BR:
     show:
       see: "Menu de %{name}"
       add_items: Adicionar itens
+    edit:
+      edit: "Editar menu de %{name}"

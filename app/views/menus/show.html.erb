@@ -3,5 +3,9 @@
 
 <%= link_to t('views.show.add_items'), new_menu_item_path(@menu) %>
 
+<% if owner_signed_in? && @restaurant.owner == current_owner %>
+  <%= link_to t('helpers.submit.edit'), edit_menu_path(@menu) %><br>
+<% end %>
+
 <%= link_to t('helpers.buttons.back'), restaurant_path(@restaurant) %>
 
