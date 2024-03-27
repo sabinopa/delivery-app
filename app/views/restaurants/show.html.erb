@@ -33,13 +33,15 @@
   <%= @lacks_options if @lacks_options.present? %>
   <br>
   <p><strong><%= t('views.new.payment_by')%></strong>: <%= @restaurant.payment_methods.map(&:method).join(' | ') %></p>
+
   <p><strong><%= t('views.show.menus') %></strong>:
     <% @restaurant.menus.each do |menu| %>
-      <%= link_to menu.name, menu_path(menu) %>
-      <%= ' | ' unless menu == @restaurant.menus.last %>
+      <%= link_to menu.name, menu_path(menu) %> ➔
+      <%= link_to t('views.show.add_item'), new_menu_item_path(menu) %><br>
     <% end %>
   </p>
 </div>
+
 <% if owner_signed_in? && @restaurant.owner == current_owner %>
   <%= link_to t('helpers.submit.edit'), edit_restaurant_path(@restaurant) %><br>
 <% end %>

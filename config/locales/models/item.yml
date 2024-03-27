@@ -1,0 +1,43 @@
+pt-BR:
+  activerecord:
+    models:
+      items:
+        one: Iten
+        other: Itens
+    attributes:
+      item:
+        name: Nome
+        description: Descrição
+        price: Preço
+        category: Categoria
+        additional: Adicionais
+        spice_level: Nível de Picante
+        vegan: Vegano
+        vegetarian: Vegetariano
+        gluten_free: Sem Glúten
+  item:
+    # options:
+    #   vegan: "veganas"
+    #   vegetarian: "vegetarianas"
+    #   gluten_free: "sem glúten"
+    # status:
+    #   active: iteme ativo
+    #   inactive: Restaurante inativo
+    # phrases:
+    #   has_options: "Possui opções %{options}."
+    #   lacks_options: "Não possui opções %{options}."
+  items:
+    new:
+      error: Apenas o proprietário do restaurante pode criar itens.
+    create:
+      success: "%{name}: Criado com sucesso!"
+      error: Item não cadastrado.
+  views:
+    new:
+      new_item: "Criar novo item para %{name}"
+      real: R$
+    show:
+      option: Opção
+      vegan: vegano
+      vegetarian: vegetariano
+      gluten_free: sem glúten

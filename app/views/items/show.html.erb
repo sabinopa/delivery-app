@@ -1,0 +1,22 @@
+<h1><%= @item.name %></h1>
+<p><%= @item.description %></p>
+
+
+<dl>
+  <dt><%= Item.human_attribute_name(:category) %>:</dt>
+  <dd><%= @item.category.name %></dd>
+  <dt><%= Item.human_attribute_name(:price) %>:</dt>
+  <dd><%= @item.price %></dd>
+  <dt><%= Item.human_attribute_name(:spice_level) %>:</dt>
+  <dd><%= @item.spice_level %></dd>
+  <dt><%= Item.human_attribute_name(:additional) %>:</dt>
+  <dd><%= @item.additional %></dd>
+  <dt><%= t('views.show.option')  %>:</dt>
+  <dd>
+    <%= [
+      (@item.vegan ? t('views.show.vegan') : nil),
+      (@item.vegetarian ? t('views.show.vegetarian') : nil),
+      (@item.gluten_free ? t('views.show.gluten_free') : nil)
+    ].compact.join(' | ') %>
+  </dd>
+</dl>

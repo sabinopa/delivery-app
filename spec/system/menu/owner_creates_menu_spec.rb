@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Owner creates new menu' do
+describe 'Owner creates menu' do
   it 'must be authenticated' do
     pix = PaymentMethod.create!(method: 'PIX')
     credito = PaymentMethod.create!(method: 'Cartão de Crédito')

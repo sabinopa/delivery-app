@@ -1,0 +1,62 @@
+<h2><%= t('views.new.new_item', name: @menu.name) %></h2>
+
+<% if(@item.errors.any?) %>
+  <p><%= t('errors.messages.verify_error') %></p>
+  <ul>
+    <% @item.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: [@menu, @item] do |form| %>
+  <div>
+    <%= form.label :name %>:
+    <%= form.text_field :name %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :description %>:
+    <%= form.text_area :description %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :price %>:
+    <%= t('views.new.real') %>
+    <%= form.text_field :price %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :category %>:
+    <%= form.collection_select :category_id, Category.all, :id, :name %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :additional %>:
+    <%= form.text_area :additional %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :spice_level %>:
+    <%= form.radio_button :spice_level, 1, id: :spice_level_1 %> <%= label :spice_level_1, '1' %>
+    <%= form.radio_button :spice_level, 2, id: :spice_level_2 %> <%= label :spice_level_2, '2' %>
+    <%= form.radio_button :spice_level, 3, id: :spice_level_3 %> <%= label :spice_level_3, '3' %>
+  </div>
+  <br>
+  <div>
+    <%= form.check_box :vegan %>
+    <%= form.label :vegan %>
+  </div>
+  <br>
+  <div>
+    <%= form.check_box :vegetarian %>
+    <%= form.label :vegetarian %>
+  </div>
+  <br>
+  <div>
+    <%= form.check_box :gluten_free %>
+    <%= form.label :gluten_free%>
+  </div>
+  <br>
+  <%= form.submit t('helpers.submit.submit') %>
+<% end %>

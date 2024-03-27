@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     post 'inactive', on: :member
     post 'active', on: :member
     resources :menus, only: [:new, :create, :index, :show, :edit, :update] do
-      resources :items, only: [:new, :create]
+      resources :items, only: [:new, :create, :show]
     end
   end
 end

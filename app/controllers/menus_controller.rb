@@ -5,7 +5,8 @@ class MenusController < ApplicationController
   before_action :check_owner, only: [:edit, :update]
 
   def index
-    @menus = Menu.all
+    @menus = @restaurant.menus.includes(:items)
+
   end
 
   def show

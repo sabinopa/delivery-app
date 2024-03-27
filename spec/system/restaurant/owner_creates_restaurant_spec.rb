@@ -140,7 +140,6 @@ describe 'Owner creates restaurant' do
     expect(page).to have_content 'Não possui opções sem glúten.'
   end
 
-
   it 'already has a restaurant registered' do
     pix = PaymentMethod.create!(method: 'PIX')
     credito = PaymentMethod.create!(method: 'Cartão de Crédito')

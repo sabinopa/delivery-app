@@ -3,5 +3,9 @@
 <p><%= link_to t('views.show.create_menu'), new_restaurant_menu_path(@restaurant) %></p>
 
 <% @menus.each do |menu| %>
-  <%= link_to menu.name, menu_path(menu) %><br>
+  <p><strong><%= link_to menu.name, menu_path(menu) %></strong><br>
+  <% menu.items.each do |item| %>
+    <%= link_to item.name, item_path(item) %><br>
+  <% end %> </p>
+
 <% end %>
