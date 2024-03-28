@@ -40,6 +40,5 @@ pt-BR:
     show:
       see: "Menu de %{name}"
       add_items: Adicionar itens
-      items: Items
     edit:
       edit: "Editar menu de %{name}"

@@ -1,11 +1,10 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_owner!, only: [:new, :create, :edit, :update]
-  before_action :set_menu, only: [:new, :create, :edit, :update]
-  before_action :check_owner, only: [:new, :create, :edit, :update]
+  before_action :authenticate_owner!
+  before_action :set_menu, only: [:new, :create]
+  before_action :check_owner, only: [:new, :create]
 
   def show
     @item = Item.find(params[:id])
-    @menu = @item.menu
   end
 
   def new
@@ -21,12 +20,6 @@ class ItemsController < ApplicationController
       flash.now[:alert] = t('.error')
       render :new
     end
-  end
-
-  def edit
-  end
-
-  def update
   end
 
 

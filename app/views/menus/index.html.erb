@@ -4,10 +4,8 @@
 
 <% @menus.each do |menu| %>
   <p><strong><%= link_to menu.name, menu_path(menu) %></strong><br>
-  <ul>
   <% menu.items.each do |item| %>
-    <li><%= link_to item.name, item_path(item) %></li><br>
+    <%= link_to item.name, item_path(item) %><br>
   <% end %> </p>
-  </ul>
 
 <% end %>

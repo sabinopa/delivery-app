@@ -1,6 +1,7 @@
 <h1><%= @item.name %></h1>
 <p><%= @item.description %></p>
 
+
 <dl>
   <dt><%= Item.human_attribute_name(:category) %>:</dt>
   <dd><%= @item.category.name %></dd>
@@ -19,7 +20,3 @@
     ].compact.join(' | ') %>
   </dd>
 </dl>
-
-<% if owner_signed_in? && @menu.restaurant.owner == current_owner %>
-  <%= link_to t('helpers.submit.edit'), edit_item_path(@item) %><br>
-<% end %>

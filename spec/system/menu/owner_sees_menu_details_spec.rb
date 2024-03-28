@@ -25,7 +25,7 @@ describe 'Owner sees menu details' do
     click_on 'Café da Manhã'
 
     expect(current_path).to eq menu_path(menu)
-    expect(page).to have_content 'Café da Manhã'
+    expect(page).to have_content 'Menu de Café da Manhã'
     expect(page).to have_content 'Cada prato é cuidadosamente preparado com ingredientes frescos, locais e sazonais.'
     expect(page).to have_link 'Adicionar itens'
   end
