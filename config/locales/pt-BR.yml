@@ -150,6 +150,7 @@ pt-BR:
     buttons:
       back: Voltar
     submit:
+      sign_in: Criar conta
       log_in: Entrar
       log_out: Sair
       create: Criar

@@ -10,12 +10,18 @@
   </head>
   <body>
     <header>
-      <nav>
-        <% if owner_signed_in? %>
-          <%= render 'layouts/owner_authenticated' %>
-        <% else %>
-          <%= link_to t('helpers.submit.log_in'), new_owner_session_path %>
-        <% end %>
+      <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container">
+          <%= link_to t('views.home.delivery_app'), root_path, class: "navbar-brand" %>
+          <div class="ms-auto">
+            <% if owner_signed_in? %>
+              <%= render 'layouts/owner_authenticated' %>
+            <% else %>
+              <%= link_to t('helpers.submit.log_in'), new_owner_session_path, class: "btn btn-outline-primary mr-2" %>
+              <%= link_to t('helpers.submit.sign_in'), new_owner_registration_path, class: "btn btn-outline-success" %>
+            <% end %>
+          </div>
+        </div>
       </nav>
     </header>
     <p><%= notice %></p>

@@ -12,6 +12,8 @@ describe 'Owner creates restaurant' do
     click_on 'Entrar'
     click_on 'Criar uma conta'
     within 'form' do
+      fill_in 'Nome', with: 'Priscila'
+      fill_in 'Sobrenome', with: 'Sabino'
       fill_in 'E-mail', with: 'priscila@email.com'
       fill_in 'Senha', with: '12345678'
       fill_in 'Confirme sua senha', with: '12345678'
@@ -26,7 +28,7 @@ describe 'Owner creates restaurant' do
     PaymentMethod.create!(method: 'Cartão de Crédito')
     PaymentMethod.create!(method: 'Cartão de Débito')
     PaymentMethod.create!(method: 'Dinheiro')
-    owner = Owner.create!(email: 'priscila@email.com', password: '12345678')
+    owner = Owner.create!(name: 'Priscila', lastname: 'Sabino', email: 'priscila@email.com', password: '12345678')
 
     login_as(owner, :scope => :owner)
     visit new_restaurant_path
@@ -57,7 +59,7 @@ describe 'Owner creates restaurant' do
   end
 
   it 'with incomplete data' do
-    owner = Owner.create!(email: 'priscila@email.com', password: '12345678')
+    owner = Owner.create!(name: 'Priscila', lastname: 'Sabino', email: 'priscila@email.com', password: '12345678')
 
     login_as(owner, :scope => :owner)
     visit new_restaurant_path
@@ -91,7 +93,7 @@ describe 'Owner creates restaurant' do
   end
 
   it 'and cant visit homepage before registering a restaurant' do
-    owner = Owner.create!(email: 'priscila@email.com', password: '12345678')
+    owner = Owner.create!(name: 'Priscila', lastname: 'Sabino', email: 'priscila@email.com', password: '12345678')
 
     login_as(owner, :scope => :owner)
     visit root_path
@@ -105,7 +107,7 @@ describe 'Owner creates restaurant' do
     PaymentMethod.create!(method: 'Cartão de Crédito')
     PaymentMethod.create!(method: 'Cartão de Débito')
     PaymentMethod.create!(method: 'Dinheiro')
-    owner = Owner.create!(email: 'priscila@email.com', password: '12345678')
+    owner = Owner.create!(name: 'Priscila', lastname: 'Sabino', email: 'priscila@email.com', password: '12345678')
 
     login_as(owner, :scope => :owner)
     visit new_restaurant_path
@@ -144,7 +146,7 @@ describe 'Owner creates restaurant' do
     pix = PaymentMethod.create!(method: 'PIX')
     credito = PaymentMethod.create!(method: 'Cartão de Crédito')
     debito = PaymentMethod.create!(method: 'Cartão de Débito')
-    owner = Owner.create!(email: 'priscila@email.com', password: '12345678')
+    owner = Owner.create!(name: 'Priscila', lastname: 'Sabino', email: 'priscila@email.com', password: '12345678')
     restaurante = Restaurant.create!(owner: owner, brand_name: 'Cantina Mediterrânea', corporate_name: 'Sabores do Mar Mediterrâneo Ltda',
                                     registration_number: '98.765.432/0001-11', phone_number: '(11) 99876-5432',
                                     email: 'contato@cantinamediterranea.com.br', address: 'Rua das Oliveiras, 5678',

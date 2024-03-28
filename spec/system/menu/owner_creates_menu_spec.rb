@@ -5,7 +5,7 @@ describe 'Owner creates menu' do
     pix = PaymentMethod.create!(method: 'PIX')
     credito = PaymentMethod.create!(method: 'Cartão de Crédito')
     debito = PaymentMethod.create!(method: 'Cartão de Débito')
-    owner = Owner.create!(email: 'priscila@email.com', password: '12345678')
+    owner = Owner.create!(name: 'Priscila', lastname: 'Sabino', email: 'priscila@email.com', password: '12345678')
     restaurante = Restaurant.create!(owner: owner, brand_name: 'Cantina Mediterrânea', corporate_name: 'Sabores do Mar Mediterrâneo Ltda',
                                     registration_number: '98.765.432/0001-11', phone_number: '(11) 99876-5432',
                                     email: 'contato@cantinamediterranea.com.br', address: 'Rua das Oliveiras, 5678',
@@ -25,7 +25,7 @@ describe 'Owner creates menu' do
     pix = PaymentMethod.create!(method: 'PIX')
     credito = PaymentMethod.create!(method: 'Cartão de Crédito')
     debito = PaymentMethod.create!(method: 'Cartão de Débito')
-    owner = Owner.create!(email: 'priscila@email.com', password: '12345678')
+    owner = Owner.create!(name: 'Priscila', lastname: 'Sabino', email: 'priscila@email.com', password: '12345678')
     restaurante = Restaurant.create!(owner: owner, brand_name: 'Cantina Mediterrânea', corporate_name: 'Sabores do Mar Mediterrâneo Ltda',
                                     registration_number: '98.765.432/0001-11', phone_number: '(11) 99876-5432',
                                     email: 'contato@cantinamediterranea.com.br', address: 'Rua das Oliveiras, 5678',
@@ -50,7 +50,7 @@ describe 'Owner creates menu' do
     pix = PaymentMethod.create!(method: 'PIX')
     credito = PaymentMethod.create!(method: 'Cartão de Crédito')
     debito = PaymentMethod.create!(method: 'Cartão de Débito')
-    owner = Owner.create!(email: 'priscila@email.com', password: '12345678')
+    owner = Owner.create!(name: 'Priscila', lastname: 'Sabino', email: 'priscila@email.com', password: '12345678')
     restaurante = Restaurant.create!(owner: owner, brand_name: 'Cantina Mediterrânea', corporate_name: 'Sabores do Mar Mediterrâneo Ltda',
                                     registration_number: '98.765.432/0001-11', phone_number: '(11) 99876-5432',
                                     email: 'contato@cantinamediterranea.com.br', address: 'Rua das Oliveiras, 5678',
@@ -76,7 +76,7 @@ describe 'Owner creates menu' do
     pix = PaymentMethod.create!(method: 'PIX')
     credito = PaymentMethod.create!(method: 'Cartão de Crédito')
     debito = PaymentMethod.create!(method: 'Cartão de Débito')
-    owner = Owner.create!(email: 'priscila@email.com', password: '12345678')
+    owner = Owner.create!(name: 'Priscila', lastname: 'Sabino', email: 'priscila@email.com', password: '12345678')
     restaurante = Restaurant.create!(owner: owner, brand_name: 'Cantina Mediterrânea', corporate_name: 'Sabores do Mar Mediterrâneo Ltda',
                                     registration_number: '98.765.432/0001-11', phone_number: '(11) 99876-5432',
                                     email: 'contato@cantinamediterranea.com.br', address: 'Rua das Oliveiras, 5678',
@@ -102,7 +102,7 @@ describe 'Owner creates menu' do
     credito = PaymentMethod.create!(method: 'Cartão de Crédito')
     debito = PaymentMethod.create!(method: 'Cartão de Débito')
     breakfast = Category.create!(name: 'Café da Manhã')
-    priscila = Owner.create!(email: 'priscila@email.com', password: '12345678')
+    priscila = Owner.create!(name: 'Priscila', lastname: 'Sabino', email: 'priscila@email.com', password: '12345678')
     restaurante = Restaurant.create!(owner: priscila, brand_name: 'Cantina Mediterrânea', corporate_name: 'Sabores do Mar Mediterrâneo Ltda',
                                     registration_number: '98.765.432/0001-11', phone_number: '(11) 99876-5432',
                                     email: 'contato@cantinamediterranea.com.br', address: 'Rua das Oliveiras, 5678',
@@ -112,7 +112,7 @@ describe 'Owner creates menu' do
                                     ser feitos até 48 horas antes da reserva.', estimated_time: 50, vegan_options: true,
                                     vegetarian_options: true, gluten_free_options: false)
                                     restaurante.payment_methods << [pix, credito, debito]
-    pedro =  Owner.create!(email: 'pedro@email.com', password: 'password')
+    pedro =  Owner.create!(name: 'Pedro', lastname: 'Souza', email: 'pedro@email.com', password: 'password')
     restaurante_2 = Restaurant.create!(owner: pedro, brand_name: 'Delícias Tropicais', corporate_name: 'Delícias Tropicais Gastronomia Ltda',
                                       registration_number: '12.345.678/9012-34', phone_number: '(21) 98765-4321',
                                       email: 'contato@deliciastropicais.com.br', address: 'Avenida Praiana, 123',

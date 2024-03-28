@@ -6,6 +6,8 @@ describe 'Owner creates an account' do
     click_on 'Entrar'
     click_on 'Criar uma conta'
     within 'form' do
+      fill_in 'Nome', with: 'Priscila'
+      fill_in 'Sobrenome', with: 'Sabino'
       fill_in 'E-mail', with: 'priscila@email.com'
       fill_in 'Senha', with: '12345678'
       fill_in 'Confirme sua senha', with: '12345678'

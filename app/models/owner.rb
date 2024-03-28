@@ -5,4 +5,10 @@ class Owner < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :restaurant
+
+  validates :name, :lastname, presence: true
+
+  def description
+    "#{name} #{lastname} - #{email}"
+  end
 end

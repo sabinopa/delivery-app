@@ -5,7 +5,7 @@ describe 'owner updates restaurant status' do
     pix = PaymentMethod.create!(method: 'PIX')
     credito = PaymentMethod.create!(method: 'Cartão de Crédito')
     debito = PaymentMethod.create!(method: 'Cartão de Débito')
-    owner = Owner.create!(email: 'pedro@email.com', password: 'password')
+    owner = Owner.create!(name: 'Priscila', lastname: 'Sabino', email: 'priscila@email.com', password: '12345678')
     restaurante = Restaurant.create!(owner: owner, brand_name: 'Delícias Tropicais', corporate_name: 'Delícias Tropicais Gastronomia Ltda',
                                       registration_number: '12.345.678/9012-34', phone_number: '(21) 98765-4321',
                                       email: 'contato@deliciastropicais.com.br', address: 'Avenida Praiana, 123',
@@ -26,7 +26,7 @@ describe 'owner updates restaurant status' do
     pix = PaymentMethod.create!(method: 'PIX')
     credito = PaymentMethod.create!(method: 'Cartão de Crédito')
     debito = PaymentMethod.create!(method: 'Cartão de Débito')
-    owner = Owner.create!(email: 'pedro@email.com', password: 'password')
+    owner = Owner.create!(name: 'Priscila', lastname: 'Sabino', email: 'priscila@email.com', password: '12345678')
     restaurante = Restaurant.create!(owner: owner, brand_name: 'Delícias Tropicais', corporate_name: 'Delícias Tropicais Gastronomia Ltda',
                                       registration_number: '12.345.678/9012-34', phone_number: '(21) 98765-4321',
                                       email: 'contato@deliciastropicais.com.br', address: 'Avenida Praiana, 123',
@@ -56,7 +56,7 @@ describe 'owner updates restaurant status' do
     pix = PaymentMethod.create!(method: 'PIX')
     credito = PaymentMethod.create!(method: 'Cartão de Crédito')
     debito = PaymentMethod.create!(method: 'Cartão de Débito')
-    owner = Owner.create!(email: 'pedro@email.com', password: 'password')
+    owner = Owner.create!(name: 'Priscila', lastname: 'Sabino', email: 'priscila@email.com', password: '12345678')
     restaurante = Restaurant.create!(owner: owner, brand_name: 'Delícias Tropicais', corporate_name: 'Delícias Tropicais Gastronomia Ltda',
                                       registration_number: '12.345.678/9012-34', phone_number: '(21) 98765-4321',
                                       email: 'contato@deliciastropicais.com.br', address: 'Avenida Praiana, 123',
@@ -85,8 +85,8 @@ describe 'owner updates restaurant status' do
     pix = PaymentMethod.create!(method: 'PIX')
     credito = PaymentMethod.create!(method: 'Cartão de Crédito')
     debito = PaymentMethod.create!(method: 'Cartão de Débito')
-    priscila = Owner.create!(email: 'priscila@email.com', password: '12345678')
-    pedro = Owner.create!(email: 'pedro@email.com', password: 'password')
+    priscila = Owner.create!(name: 'Priscila', lastname: 'Sabino', email: 'priscila@email.com', password: '12345678')
+    pedro = Owner.create!(name: 'Pedro', lastname: 'Souza', email: 'pedro@email.com', password: 'password')
     restaurante = Restaurant.create!(owner: priscila, brand_name: 'Cantina Mediterrânea', corporate_name: 'Sabores do Mar Mediterrâneo Ltda',
                                     registration_number: '98.765.432/0001-11', phone_number: '(11) 99876-5432',
                                     email: 'contato@cantinamediterranea.com.br', address: 'Rua das Oliveiras, 5678',
