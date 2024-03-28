@@ -1,11 +1,18 @@
-<h2><%= t('views.show.see', name: @menu.name) %></h2>
+<h2><%= @menu.name %></h2>
 <p><%= @menu.description %></p>
-
-<%= link_to t('views.show.add_items'), new_menu_item_path(@menu) %>
-
 <% if owner_signed_in? && @restaurant.owner == current_owner %>
   <%= link_to t('helpers.submit.edit'), edit_menu_path(@menu) %><br>
 <% end %>
 
+<p><strong><%= t('views.show.items') %>:</strong></p>
+  <ul>
+  <% @menu.items.each do |item| %>
+    <li><%= link_to item.name, item_path(item) %></li><br>
+  <% end %> </p>
+  </ul>
+
+<%= link_to t('views.show.add_items'), new_menu_item_path(@menu) %>
+<br>
+<br>
 <%= link_to t('helpers.buttons.back'), restaurant_path(@restaurant) %>
 
