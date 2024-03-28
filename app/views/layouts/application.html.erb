@@ -24,8 +24,17 @@
         </div>
       </nav>
     </header>
-    <p><%= notice %></p>
-    <p><%= alert %></p>
-    <%= yield %>
+    <main class="container-fluid">
+      <div>
+        <% if alert %>
+          <div class="alert alert-danger" role="alert"><%= alert %></div>
+        <% end %>
+        <% if notice %>
+          <div class="alert alert-success" role="alert"><%= notice %></div>
+        <% end %>
+      </div>
+
+      <%= yield %>
+    </main>
   </body>
 </html>
