@@ -31,7 +31,7 @@ pt-BR:
     update:
       edit: Edite os dados do menu
       success: "%{name}: Atualizado com sucesso!"
-      error: Não foi possível atualizar os dados do restaurante.
+      error: Não foi possível atualizar os dados do menu.
   views:
     index:
       list: "Menus de %{brand_name}"
