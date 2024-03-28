@@ -38,7 +38,8 @@ pt-BR:
     new:
       create_menu: Crie seu novo menu
     show:
-      see: "Menu de %{name}"
+      see: "%{name}"
       add_items: Adicionar itens
+      items: Itens
     edit:
       edit: "Editar menu de %{name}"

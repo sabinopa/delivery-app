@@ -1,11 +1,24 @@
-<h2><%= t('views.show.see', name: @menu.name) %></h2>
+<h2><b><%= t('views.show.see', name: @menu.name) %></b></h2>
 <p><%= @menu.description %></p>
 
-<%= link_to t('views.show.add_items'), new_menu_item_path(@menu) %>
-
 <% if owner_signed_in? && @restaurant.owner == current_owner %>
-  <%= link_to t('helpers.submit.edit'), edit_menu_path(@menu) %><br>
+  <%= link_to t('helpers.submit.edit'), edit_menu_path(@menu), class:"btn btn-primary btn-sm" %>
+  <%= link_to t('views.show.add_items'), new_menu_item_path(@menu), class:"btn btn-primary btn-sm" %>
 <% end %>
 
-<%= link_to t('helpers.buttons.back'), restaurant_path(@restaurant) %>
+<div class="mt-5 mb-3">
+  <ul class="list-group list-group-horizontal-sm">
+    <li class="list-group-item"><b>
+      <%= t('views.show.items') %>:</b>
+    </li>
+    <% @menu.items.each do |item| %>
+      <li class="list-group-item">
+        <%= link_to item.name, item_path(item), class: "text-decoration-none" %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<hr />
+<%= link_to t('helpers.buttons.back'), restaurant_path(@restaurant), class:"btn btn-secondary btn-sm" %>
 
