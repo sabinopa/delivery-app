@@ -38,6 +38,7 @@
   <br>
   <div>
     <%= form.label :spice_level %>:
+    <%= form.radio_button :spice_level, 0, id: :spice_level_0 %> <%= label :spice_level_0, '0' %>
     <%= form.radio_button :spice_level, 1, id: :spice_level_1 %> <%= label :spice_level_1, '1' %>
     <%= form.radio_button :spice_level, 2, id: :spice_level_2 %> <%= label :spice_level_2, '2' %>
     <%= form.radio_button :spice_level, 3, id: :spice_level_3 %> <%= label :spice_level_3, '3' %>

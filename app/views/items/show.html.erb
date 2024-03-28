@@ -1,25 +1,48 @@
-<h1><%= @item.name %></h1>
-<p><%= @item.description %></p>
+<div class="row">
+  <div class="col-md-6">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary"><%= @item.name %></h6>
+        <p class="mb-0"><%= @item.description %></p>
+      </div>
+      <div class="card-body">
+        <h4 class="small font-weight-bold">
+        <dl>
+          <dt><%= Item.human_attribute_name(:category) %>:</dt>
+          <dd><%= @item.category.name %></dd>
+          <dt><%= Item.human_attribute_name(:price) %>:</dt>
+          <dd><%= @item.price %></dd>
+          <dt><%= Item.human_attribute_name(:spice_level) %>:</dt>
+          <dd><%= @item.spice_level %> / 5</dd>
+          <div class="progress mb-3" style="max-width: 30%;">
+            <% width_percentage = (@item.spice_level.to_f / 5) * 100 %>
+            <% bar_color = case @item.spice_level
+                           when 1..2 then "bg-success"
+                           when 3 then "bg-warning"
+                           when 4..5 then "bg-danger"
+                           else "bg-secondary"
+                           end %>
+            <div class="progress-bar <%= bar_color %>" role="progressbar"
+                 style="width: <%= width_percentage %>%" aria-valuenow="<%= width_percentage %>"
+                 aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+          <dt><%= Item.human_attribute_name(:additional) %>:</dt>
+          <dd><%= @item.additional %></dd>
+          <dt><%= t('views.show.option') %>:</dt>
+          <dd>
+            <%= [
+              (@item.vegan ? t('views.show.vegan') : nil),
+              (@item.vegetarian ? t('views.show.vegetarian') : nil),
+              (@item.gluten_free ? t('views.show.gluten_free') : nil)
+            ].compact.join(' | ') %>
+          </dd>
+        </dl>
+        </h4>
+      </div>
+    </div>
+    <hr />
+    <%= link_to t('helpers.buttons.back'), menu_path(@menu), class: "btn btn-secondary btn-sm" %>
+  </div>
+</div>
 
-
-<dl>
-  <dt><%= Item.human_attribute_name(:category) %>:</dt>
-  <dd><%= @item.category.name %></dd>
-  <dt><%= Item.human_attribute_name(:price) %>:</dt>
-  <dd><%= @item.price %></dd>
-  <dt><%= Item.human_attribute_name(:spice_level) %>:</dt>
-  <dd><%= @item.spice_level %></dd>
-  <dt><%= Item.human_attribute_name(:additional) %>:</dt>
-  <dd><%= @item.additional %></dd>
-  <dt><%= t('views.show.option')  %>:</dt>
-  <dd>
-    <%= [
-      (@item.vegan ? t('views.show.vegan') : nil),
-      (@item.vegetarian ? t('views.show.vegetarian') : nil),
-      (@item.gluten_free ? t('views.show.gluten_free') : nil)
-    ].compact.join(' | ') %>
-  </dd>
-</dl>
-
-<hr />
-<%= link_to t('helpers.buttons.back'), menu_path(@menu), class:"btn btn-secondary btn-sm" %>
