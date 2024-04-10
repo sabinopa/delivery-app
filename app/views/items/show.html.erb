@@ -8,6 +8,16 @@
       <div class="card-body">
         <h4 class="small font-weight-bold">
         <dl>
+          <% if owner_signed_in? && @menu.restaurant.owner == current_owner %>
+          <%= link_to t('helpers.submit.edit'), edit_item_path(@item), class:"btn btn-primary btn-sm" %>
+            <% if @item.active? %>
+              <%= button_to t('views.show.item_inactive'), inactive_item_path(@item) %>
+            <% else %>
+              <%= button_to t('views.show.item_active'), active_item_path(@item) %>
+            <% end %>
+            <dt><%= Item.human_attribute_name(:status) %>:</dt>
+            <dd><%= I18n.t("item.status.#{@item.status}") %></dd>
+          <% end %>
           <dt><%= Item.human_attribute_name(:category) %>:</dt>
           <dd><%= @item.category.name %></dd>
           <dt><%= Item.human_attribute_name(:price) %>:</dt>

@@ -16,28 +16,35 @@ pt-BR:
         vegetarian: Vegetariano
         gluten_free: Sem Glúten
   item:
-    # options:
-    #   vegan: "veganas"
-    #   vegetarian: "vegetarianas"
-    #   gluten_free: "sem glúten"
-    # status:
-    #   active: iteme ativo
-    #   inactive: Restaurante inativo
-    # phrases:
-    #   has_options: "Possui opções %{options}."
-    #   lacks_options: "Não possui opções %{options}."
+    status:
+      active: Item ativo
+      inactive: Item inativo
   items:
     new:
       error: Apenas o proprietário do restaurante pode criar itens.
     create:
       success: "%{name}: Criado com sucesso!"
       error: Item não cadastrado.
+    edit:
+      error: Apenas o proprietário do restaurante pode editar itens.
+    update:
+      edit: Edite os dados do item
+      success: "%{name}: Atualizado com sucesso!"
+      error: Não foi possível atualizar os dados do item.
+    inactive:
+      success: "%{name}: Está inativo!"
+    active:
+      success: "%{name}: Está ativo!"
   views:
     new:
       new_item: "Criar novo item para %{name}"
       real: R$
+    edit:
+      item: "Editar %{name}"
     show:
       option: Opção
       vegan: vegano
       vegetarian: vegetariano
       gluten_free: sem glúten
+      item_active: Ativar item
+      item_inactive: Desativar item

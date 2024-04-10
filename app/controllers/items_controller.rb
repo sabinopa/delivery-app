@@ -1,17 +1,15 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_owner!
-  before_action :set_menu, only: [:new, :create]
-  before_action :check_owner, only: [:new, :create]
+  before_action :authenticate_owner!, except: [:show]
+  before_action :set_item, only: [:show, :edit, :update, :inactive, :active]
+  before_action :set_menu, only: [:new, :create, :edit, :update, :show, :inactive, :active]
+  before_action :check_owner, only: [:new, :create, :edit, :update, :inactive, :active]
 
   def show
-    @item = Item.find(params[:id])
-    @menu = @item.menu
   end
 
   def new
     @item = Item.new
   end
-
   def create
     @item = @menu.items.new(item_params)
     if @item.save
@@ -23,11 +21,51 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @item.update(item_params)
+      flash[:notice] = t('.success', name: @item.name)
+      redirect_to @item
+    else
+      flash.now[:alert] = t('.error')
+      render :edit
+    end
+  end
+
+  def inactive
+    @item.inactive!
+    flash[:alert] = t('.success', name: @item.name)
+    redirect_to @item
+  end
+
+  def active
+    @item.active!
+    flash[:notice] = t('.success', name: @item.name)
+    redirect_to @item
+  end
 
   private
 
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
   def set_menu
-    @menu = Menu.find(params[:menu_id])
+    if params[:menu_id]
+      @menu = Menu.find(params[:menu_id])
+    else
+      @menu = @item.menu
+    end
+  end
+
+  def set_restaurant
+    if params[:restaurant_id]
+      @restaurant = Restaurant.find(params[:restaurant_id])
+    else
+      @restaurant = @menu.restaurant
+    end
   end
 
   def item_params
